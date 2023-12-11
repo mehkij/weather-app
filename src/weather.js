@@ -1,7 +1,7 @@
 export { getCurrentWeather, getLocation };
 
-const pWeather = document.querySelector(".current-weather");
-const pLocation = document.querySelector(".location");
+const weatherElement = document.querySelector(".current-weather");
+const locationElement = document.querySelector(".location");
 
 // Function gets the current location from the user and appends it to the end of the URL to return the Weather API's current weather and location data
 async function getCurrentWeather(location) {
@@ -10,7 +10,7 @@ async function getCurrentWeather(location) {
     let response = await fetch(current.url);
     let weatherData = await response.json();
     console.log(weatherData);
-    pWeather.textContent = weatherData.current.temp_f + "F";
+    weatherElement.textContent = weatherData.current.temp_f + "F";
   }
   catch(error) {
     console.error("Error fetching weather data:", error);
@@ -23,7 +23,7 @@ async function getLocation(location) {
     let response = await fetch(current.url);
     let weatherData = await response.json();
     console.log(weatherData);
-    pLocation.textContent = weatherData.location.name;
+    locationElement.textContent = weatherData.location.name;
   }
   catch(error) {
     console.error("Error fetching weather data (location):", error);
