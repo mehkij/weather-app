@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  padding: 0;
 }
 
 .container,
@@ -9,4 +8,25 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding: 8px;
+}
+
+.searchbar {
+  width: 75%;
+  border-radius: 20px;
+  padding: 8px;
+  margin: 6px;
+  border: none;
+  background-color: #e3e3e3;
+}
+
+.searchbar:focus {
+  outline-color: #bfbfbf;
 }
