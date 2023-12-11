@@ -14,8 +14,27 @@ submit.addEventListener("click", function(e) {
       let locationData = response[0].url;
       getCurrentWeather(locationData);
       getLocation(locationData);
+      searchbar.value = "";
     })
     .catch(function(error) {
       console.error("Error fetching location data:", error);
     });
+});
+
+searchbar.addEventListener("keydown", function(e) {
+  if (e.code == "Enter") {
+    fetch("https://api.weatherapi.com/v1/search.json?key=857d876ab01b4f8a8b242735231112&q=" + searchbar.value, {mode: "cors"})
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(response) {
+      let locationData = response[0].url;
+      getCurrentWeather(locationData);
+      getLocation(locationData);
+      searchbar.value = "";
+    })
+    .catch(function(error) {
+      console.error("Error fetching location data:", error);
+    });
+  }
 });
