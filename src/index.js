@@ -14,6 +14,6 @@ submit.addEventListener("click", function(e) {
       getCurrentWeather(locationData);
     })
     .catch(function(error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching location data:", error);
     });
 });
