@@ -11,7 +11,7 @@ async function getCurrentWeather(location) {
     let response = await fetch(current.url);
     let weatherData = await response.json();
     console.log(weatherData);
-    weatherElement.textContent = weatherData.current.temp_f + "F";
+    weatherElement.textContent = weatherData.current.temp_f + "°F";
   }
   catch(error) {
     console.error("Error fetching weather data:", error);
