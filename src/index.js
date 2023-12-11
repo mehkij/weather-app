@@ -1,4 +1,5 @@
 import { getCurrentWeather } from "./weather";
+import "./style.css";
 
 const searchbar = document.querySelector(".searchbar");
 const submit = document.querySelector(".submit");
