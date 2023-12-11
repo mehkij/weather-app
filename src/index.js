@@ -7,7 +7,8 @@ submit.addEventListener("click", function(e) {
       return response.json();
     })
     .then(function(response) {
-      console.log(response);
+      let locationData = response[0].url;
+      console.log(locationData);
     })
     .catch(function(error) {
       console.error("Error fetching data:", error);
