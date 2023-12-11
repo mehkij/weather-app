@@ -1,4 +1,4 @@
-import { getCurrentWeather } from "./weather";
+import { getCurrentWeather, getLocation } from "./weather";
 import "./style.css";
 
 const searchbar = document.querySelector(".searchbar");
@@ -13,6 +13,7 @@ submit.addEventListener("click", function(e) {
     .then(function(response) {
       let locationData = response[0].url;
       getCurrentWeather(locationData);
+      getLocation(locationData);
     })
     .catch(function(error) {
       console.error("Error fetching location data:", error);
