@@ -1,4 +1,4 @@
-export { getCurrentWeather, getLocation, getWeatherCondition };
+export { getCurrentWeather, getLocation, getWeatherCondition, getForecast };
 
 const weatherElement = document.querySelector(".current-weather");
 const locationElement = document.querySelector(".location");
@@ -10,7 +10,6 @@ async function getCurrentWeather(location) {
     let current = await fetch("https://api.weatherapi.com/v1/current.json?key=857d876ab01b4f8a8b242735231112&q=" + location, {mode: "cors"});
     let response = await fetch(current.url);
     let weatherData = await response.json();
-    console.log(weatherData);
     weatherElement.textContent = weatherData.current.temp_f + "°F";
   }
   catch(error) {
@@ -23,7 +22,6 @@ async function getLocation(location) {
     let current = await fetch("https://api.weatherapi.com/v1/current.json?key=857d876ab01b4f8a8b242735231112&q=" + location, {mode: "cors"});
     let response = await fetch(current.url);
     let weatherData = await response.json();
-    console.log(weatherData);
     locationElement.textContent = weatherData.location.name;
   }
   catch(error) {
@@ -36,8 +34,20 @@ async function getWeatherCondition(location) {
     let current = await fetch("https://api.weatherapi.com/v1/current.json?key=857d876ab01b4f8a8b242735231112&q=" + location, {mode: "cors"});
     let response = await fetch(current.url);
     let weatherData = await response.json();
-    console.log(weatherData);
     conditionElement.textContent = weatherData.current.condition.text;
+  }
+  catch(error) {
+    console.error("Error fetching weather data:", error);
+  }
+};
+
+async function getForecast(location) {
+  try {
+    let current = await fetch("https://api.weatherapi.com/v1/forecast.json?key=857d876ab01b4f8a8b242735231112&q=" + location, {mode: "cors"});
+    let response = await fetch(current.url);
+    let weatherData = await response.json();
+    console.log(weatherData);
+    conditionElement.textContent = weatherData.forecast.forecastday[0].hour[0].temp_f;
   }
   catch(error) {
     console.error("Error fetching weather data:", error);
