@@ -1,4 +1,4 @@
-import { getCurrentWeather, getLocation, getWeatherCondition } from "./weather";
+import { getCurrentWeather, getLocation, getWeatherCondition, getForecast } from "./weather";
 import "./style.css";
 
 const searchbar = document.querySelector(".searchbar");
@@ -15,6 +15,7 @@ searchbar.addEventListener("keydown", function(e) {
       getCurrentWeather(locationData);
       getLocation(locationData);
       getWeatherCondition(locationData);
+      getForecast(locationData);
       searchbar.value = "";
     })
     .catch(function(error) {
